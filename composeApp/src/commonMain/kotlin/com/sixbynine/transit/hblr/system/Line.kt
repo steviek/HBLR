@@ -9,8 +9,10 @@ import com.sixbynine.transit.hblr.system.Line.HobokenEighthStreet
 import com.sixbynine.transit.hblr.system.Line.HobokenDanforth
 import com.sixbynine.transit.hblr.system.Line.HobokenTonnelle
 import com.sixbynine.transit.hblr.system.Line.HobokenTwentySecond
+import com.sixbynine.transit.hblr.system.Line.HobokenWestSide
 import com.sixbynine.transit.hblr.system.Line.LspHoboken
 import com.sixbynine.transit.hblr.system.Line.LspTonnelle
+import com.sixbynine.transit.hblr.system.Line.LspWestSide
 import com.sixbynine.transit.hblr.system.Line.RichardEighthStreet
 import com.sixbynine.transit.hblr.system.Line.TonnelleHoboken
 import com.sixbynine.transit.hblr.system.Line.TonnelleWestSide
@@ -40,6 +42,8 @@ enum class Line {
     HobokenDanforth,
     LspTonnelle,
     GarfieldWestSide,
+    HobokenWestSide,
+    LspWestSide,
 }
 
 val Line.colors: LineColors
@@ -48,7 +52,8 @@ val Line.colors: LineColors
         LspHoboken, TwentySecondHoboken, HobokenTwentySecond,
         DanforthHoboken, HobokenDanforth, RichardEighthStreet -> LineColors.Blue
 
-        WestSideTonnelle, TonnelleWestSide, LspTonnelle, GarfieldWestSide -> LineColors.Yellow
+        WestSideTonnelle, TonnelleWestSide, LspTonnelle, GarfieldWestSide, HobokenWestSide,
+        LspWestSide -> LineColors.Yellow
 
         HobokenTonnelle, TonnelleHoboken -> LineColors.Green
     }

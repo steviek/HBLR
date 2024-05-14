@@ -1,13 +1,20 @@
 package com.sixbynine.transit.hblr.system
 
 import com.sixbynine.transit.hblr.system.Line.BayonneFlyerNorth
+import com.sixbynine.transit.hblr.system.Line.BayonneFlyerSouth
 import com.sixbynine.transit.hblr.system.Line.DanforthHoboken
 import com.sixbynine.transit.hblr.system.Line.EighthStreetHoboken
 import com.sixbynine.transit.hblr.system.Line.GarfieldWestSide
+import com.sixbynine.transit.hblr.system.Line.HobokenDanforth
 import com.sixbynine.transit.hblr.system.Line.HobokenEighthStreet
 import com.sixbynine.transit.hblr.system.Line.HobokenTonnelle
+import com.sixbynine.transit.hblr.system.Line.HobokenTwentySecond
+import com.sixbynine.transit.hblr.system.Line.HobokenWestSide
 import com.sixbynine.transit.hblr.system.Line.LspHoboken
 import com.sixbynine.transit.hblr.system.Line.LspTonnelle
+import com.sixbynine.transit.hblr.system.Line.LspWestSide
+import com.sixbynine.transit.hblr.system.Line.RichardEighthStreet
+import com.sixbynine.transit.hblr.system.Line.TonnelleHoboken
 import com.sixbynine.transit.hblr.system.Line.TonnelleWestSide
 import com.sixbynine.transit.hblr.system.Line.TwentySecondHoboken
 import com.sixbynine.transit.hblr.system.Line.WestSideTonnelle
@@ -143,5 +150,64 @@ val Weekday = schedule {
     listOf(18 h 32, 18 h 45, 18 h 58, 19 h 12, 19 h 37) on HobokenTonnelle
     (20..25).forEach {
         listOf(it h 7, it h 37) on HobokenTonnelle
+    }
+
+    // Blue line south - weird one-offs
+    listOf(5 h 8, 5 h 36, 7 h 34) on RichardEighthStreet
+    listOf(7 h 12, 7 h 59, 17 h 10) on HobokenDanforth
+    listOf(7 h 29, 8 h 11, 8 h 29, 8 h 56, 9 h 4, 9 h 34, 9 h 43) on HobokenTwentySecond
+    listOf(16 h 2, 16 h 23, 16 h 41, 17 h 29, 17 h 50) on HobokenTwentySecond
+
+    // Blue line south
+    listOf(5 h 6, 5 h 21, 5 h 34, 5 h 46, 6 h 1, 6 h 15, 6 h 41, 6 h 53) on HobokenEighthStreet
+    listOf(7 h 3, 7 h 36, 7 h 45, 7 h 54, 8 h 37, 8 h 39, 8 h 50, 9 h 10) on HobokenEighthStreet
+    listOf(9 h 18, 9 h 29, 9 h 50, 10 h 0, 10 h 10, 10 h 31, 10 h 40) on HobokenEighthStreet
+    10 h 55 on HobokenEighthStreet
+    (11..14).forEach {
+        listOf(it h 15, it h 35, it h 55) on HobokenEighthStreet
+    }
+    listOf(15 h 13, 15 h 30, 15 h 44, 15 h 52, 16 h 16, 16 h 47, 16 h 59) on HobokenEighthStreet
+    listOf(17 h 16, 17 h 36, 17 h 57, 18 h 7, 18 h 19, 18 h 42, 18 h 53) on HobokenEighthStreet
+    listOf(19 h 1, 19 h 16, 19 h 27, 19 h 35, 19 h 45) on HobokenEighthStreet
+    (20..25).forEach {
+        listOf(it h 5, it h 35) on HobokenEighthStreet
+    }
+    26 h 5 on HobokenEighthStreet
+
+    // Blue line south - "express"
+    listOf(7 h 8, 7 h 22, 8 h 7, 8 h 22) on BayonneFlyerSouth
+    listOf(16 h 10, 16 h 36, 17 h 6, 17 h 24, 17 h 46, 18 h 12, 18 h 30) on BayonneFlyerSouth
+    19 h 7 on BayonneFlyerSouth
+
+    // Yellow line south
+    4 h 54 on LspWestSide
+    5 h 11 on GarfieldWestSide
+    5 h 0 on HobokenWestSide
+    listOf(5 h 5, 5 h 19, 5 h 36, 5 h 50, 6 h 4, 6 h 16, 6 h 26, 6 h 36, 6 h 48) on TonnelleWestSide
+    listOf(7 h 2, 7 h 12, 7 h 25, 7 h 37, 7 h 44, 7 h 56, 8 h 2, 8 h 14, 8 h 22) on TonnelleWestSide
+    listOf(8 h 30, 8 h 41, 8 h 53, 9 h 1, 9 h 14, 9 h 24, 9 h 34, 9 h 54) on TonnelleWestSide
+    (10..14).forEach {
+        listOf(it h 14, it h 34, it h 54) on TonnelleWestSide
+    }
+    listOf(15 h 14, 15 h 29, 15 h 37, 15 h 46, 15 h 54, 16 h 5, 16 h 12) on TonnelleWestSide
+    listOf(16 h 20, 16 h 32, 16 h 42, 16 h 55, 17 h 5, 17 h 13, 17 h 25) on TonnelleWestSide
+    listOf(17 h 35, 17 h 46, 17 h 56, 18 h 2, 18 h 10, 18 h 21, 18 h 31) on TonnelleWestSide
+    listOf(18 h 38, 18 h 50, 19 h 0, 19 h 11, 19 h 24, 19 h 46, 20 h 0) on TonnelleWestSide
+    (20..25).forEach {
+        listOf(it h 10, it h 40) on TonnelleWestSide
+    }
+
+    // Green line south
+    listOf(4 h 44, 4 h 59, 5 h 14, 5 h 29, 5 h 43, 5 h 57, 6 h 11, 6 h 23) on TonnelleHoboken
+    listOf(6 h 53, 7 h 4, 7 h 34, 7 h 52, 8 h 4, 8 h 20, 8 h 33, 8 h 47) on TonnelleHoboken
+    listOf(9 h 3, 9 h 19, 9 h 32, 9 h 43, 10 h 2, 10 h 24, 10 h 44) on TonnelleHoboken
+    (11..14).forEach {
+        listOf(it h 4, it h 24, it h 44) on TonnelleHoboken
+    }
+    listOf(14 h 58, 15 h 12, 15 h 26, 15 h 41, 15 h 52, 16 h 7, 16 h 24) on TonnelleHoboken
+    listOf(16 h 36, 16 h 49, 17 h 7, 17 h 21, 17 h 39, 17 h 52, 18 h 8) on TonnelleHoboken
+    listOf(18 h 25, 18 h 36, 18 h 52, 19 h 8, 19 h 34, 19 h 58) on TonnelleHoboken
+    (20..24).forEach {
+        listOf(it h 28, it h 58) on TonnelleHoboken
     }
 }

@@ -253,6 +253,28 @@ private val GarfieldToWestSide = route(Line.GarfieldWestSide) {
     WestSideAvenue at 4.minutes
 }
 
+private val HobokenToWestSide = route(Line.HobokenWestSide) {
+    Hoboken at 0.minutes
+    Newport at 3.minutes
+    HarsimusCove at 5.minutes
+    Harborside at 7.minutes
+    ExchangePlace at 9.minutes
+    EssexStreet at 11.minutes
+    MarinBoulevard at 13.minutes
+    JerseyAvenue at 14.minutes
+    LibertyStatePark at 17.minutes
+    GarfieldAvenue at 20.minutes
+    MLKDrive at 22.minutes
+    WestSideAvenue at 24.minutes
+}
+
+private val LspToWestSide = route(Line.LspWestSide) {
+    LibertyStatePark at 0.minutes
+    GarfieldAvenue at 3.minutes
+    MLKDrive at 5.minutes
+    WestSideAvenue at 7.minutes
+}
+
 val Line.route: Route
     get() = when (this) {
         Line.EighthStreetHoboken -> EighthStreetToHoboken
@@ -271,4 +293,6 @@ val Line.route: Route
         Line.HobokenTwentySecond -> HobokenToTwentySecondStreet
         Line.HobokenDanforth -> HobokenToDanforth
         Line.GarfieldWestSide -> GarfieldToWestSide
+        Line.HobokenWestSide -> HobokenToWestSide
+        Line.LspWestSide -> LspToWestSide
     }

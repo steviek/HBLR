@@ -1,0 +1,28 @@
+package com.sixbynine.transit.hblr.system
+
+enum class Station {
+    EighthStreet,
+    TwentySecondStreet,
+    ThirtyFourthStreet,
+    FortyFifthStreet,
+    DanforthAvenue,
+    RichardStreet,
+    WestSideAvenue,
+    MLKDrive,
+    GarfieldAvenue,
+    LibertyStatePark,
+    JerseyAvenue,
+    MarinBoulevard,
+    EssexStreet,
+    ExchangePlace,
+    Harborside,
+    HarsimusCove,
+    Newport,
+    Hoboken,
+    SecondStreet,
+    NinthStreet,
+    LincolnHarbor,
+    PortImperial,
+    BergenlineAvenue,
+    TonnelleAvenue,
+}

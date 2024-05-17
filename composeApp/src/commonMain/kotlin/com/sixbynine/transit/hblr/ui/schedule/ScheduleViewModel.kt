@@ -32,10 +32,7 @@ class ScheduleViewModel : ViewModel() {
             while (true) {
                 allDepartures = DepartureManager.allDepartures(LocalDateTime.now())
                 updateState {
-                    copy(
-                        time = "Departures at ${TimeFormatting.formatTime(LocalTime.now())}",
-                        departures = getDeparturesForSearchText(searchText)
-                    )
+                    copy(departures = getDeparturesForSearchText(searchText))
                 }
                 delay(30.seconds)
             }

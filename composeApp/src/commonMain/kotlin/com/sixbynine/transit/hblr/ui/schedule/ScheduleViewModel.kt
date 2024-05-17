@@ -14,9 +14,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 class ScheduleViewModel : ViewModel() {
+
+    private val queryParams = getQueryParams()
+    private val isAmbientMode = queryParams["mode"] == "ambient"
 
     private var allDepartures: Map<Station, List<StationDeparture>> = emptyMap()
 
@@ -29,11 +33,24 @@ class ScheduleViewModel : ViewModel() {
                 allDepartures = DepartureManager.allDepartures(LocalDateTime.now())
                 updateState {
                     copy(
-                        title = "Departures at ${TimeFormatting.formatTime(LocalTime.now())}",
+                        time = "Departures at ${TimeFormatting.formatTime(LocalTime.now())}",
                         departures = getDeparturesForSearchText(searchText)
                     )
                 }
                 delay(30.seconds)
+            }
+        }
+
+        viewModelScope.launch {
+            if (!isAmbientMode) return@launch
+
+            while (true) {
+                updateState {
+                    copy(
+                        time = TimeFormatting.formatTime(LocalTime.now(), includeSeconds = true),
+                    )
+                }
+                delay(300.milliseconds)
             }
         }
     }
@@ -64,12 +81,13 @@ class ScheduleViewModel : ViewModel() {
     }
 
     private fun createInitialState(): State {
-        val queryParams = getQueryParams()
         return State(
-            title = "Departures at ${TimeFormatting.formatTime(LocalTime.now())}",
+            time = TimeFormatting.formatTime(LocalTime.now()),
             searchText = queryParams["q"].orEmpty(),
             departures = emptyMap(),
-            overrideText = ScheduleOverride.get()?.description ?: ""
+            overrideText = ScheduleOverride.get()?.description ?: "",
+            displaySearchBar = !isAmbientMode,
+            displayTime = isAmbientMode
         )
     }
 

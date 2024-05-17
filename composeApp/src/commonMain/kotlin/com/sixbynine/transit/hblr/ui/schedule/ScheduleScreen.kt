@@ -47,31 +47,36 @@ fun ScheduleScreen() {
     val onIntent = viewModel::onIntent
 
     Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
-        BoxWithConstraints(Modifier.fillMaxSize()) {
+        BoxWithConstraints(Modifier.padding(padding).fillMaxSize()) {
             val density = LocalDensity.current
             val maxWidthDp = with(density) { constraints.maxWidth.toDp() }
             val isWideScreen = maxWidthDp >= 600.dp
             Column(
-                Modifier.padding(padding)
-                    .padding(horizontal = if (isWideScreen) 64.dp else 16.dp, vertical = 16.dp)
+                Modifier
+                    .padding(horizontal = if (isWideScreen) 64.dp else 16.dp)
                     .fillMaxSize()
             ) {
                 if (isWideScreen) {
                     Box(
                         Modifier.fillMaxWidth(),
                     ) {
-                        OutlinedTextField(
-                            modifier = Modifier.align(Alignment.TopCenter),
-                            value = state.searchText,
-                            onValueChange = { onIntent(SearchTextChanged(it)) },
-                            label = { Text("Search") },
-                        )
-
-                        if (state.overrideText.isNotBlank()) {
-                            Text(
-                                text = "Including " + state.overrideText,
-                                modifier = Modifier.align(Alignment.CenterEnd)
+                        if (state.displaySearchBar) {
+                            OutlinedTextField(
+                                modifier = Modifier.align(Alignment.TopCenter).padding(bottom = 16.dp),
+                                value = state.searchText,
+                                onValueChange = { onIntent(SearchTextChanged(it)) },
+                                label = { Text("Search") },
                             )
+                        }
+
+                        Row(
+                            Modifier.align(Alignment.CenterEnd),
+                        ) {
+                            if (state.overrideText.isNotBlank()) {
+                                Text(
+                                    text = "Including " + state.overrideText,
+                                )
+                            }
                         }
                     }
                 } else {
@@ -92,7 +97,7 @@ fun ScheduleScreen() {
                     }
                 }
 
-                LazyColumn(contentPadding = PaddingValues(top = 16.dp)) {
+                LazyColumn(contentPadding = PaddingValues(vertical = 16.dp)) {
                     state.departures.forEach { (station, departures) ->
                         item {
                             Text(
@@ -114,7 +119,7 @@ fun ScheduleScreen() {
                                             Modifier.weight(1f)
                                         )
 
-                                        Spacer(Modifier.width(32.dp))
+                                        Spacer(Modifier.width(64.dp))
 
                                         DepartureSection(
                                             "Southbound",
@@ -142,6 +147,20 @@ fun ScheduleScreen() {
                             Spacer(Modifier.height(32.dp))
                         }
                     }
+                }
+
+            }
+
+            if (state.displayTime) {
+                Box(
+                    Modifier.align(Alignment.TopEnd)
+                        .padding(horizontal = if (isWideScreen) 64.dp else 16.dp, vertical = 16.dp)
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    Text(
+                        text = state.time,
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
                 }
 
             }

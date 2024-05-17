@@ -2,7 +2,7 @@ package com.sixbynine.transit.hblr.util
 
 import kotlinx.browser.window
 
-actual fun getQueryParams(): Map<String, String>? {
+actual fun getQueryParams(): Map<String, String> {
     val params = mutableMapOf<String, String>()
     val query = window.location.search.substring(1) // Remove the '?' at the start
     val pairs = query.split("&").map { it.split("=") }

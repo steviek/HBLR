@@ -1,7 +1,6 @@
 package com.sixbynine.transit.hblr.util
 
 import hblr.composeapp.generated.resources.Res
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
 object Files {
@@ -10,5 +9,4 @@ object Files {
     }
 }
 
-expect val IoDispatcher: CoroutineDispatcher
-
+val IoDispatcher = platformUtils.ioDispatcher

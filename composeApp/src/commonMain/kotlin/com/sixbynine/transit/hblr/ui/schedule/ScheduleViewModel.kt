@@ -8,7 +8,7 @@ import com.sixbynine.transit.hblr.time.TimeFormatting
 import com.sixbynine.transit.hblr.time.now
 import com.sixbynine.transit.hblr.ui.ViewModel
 import com.sixbynine.transit.hblr.ui.schedule.ScheduleScreenContract.State
-import com.sixbynine.transit.hblr.util.getQueryParams
+import com.sixbynine.transit.hblr.util.platformUtils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ import kotlin.time.Duration.Companion.seconds
 
 class ScheduleViewModel : ViewModel() {
 
-    private val queryParams = getQueryParams()
+    private val queryParams = platformUtils.getQueryParams()
     private val isAmbientMode = queryParams["mode"] == "ambient"
 
     private var allDepartures: Map<Station, List<StationDeparture>> = emptyMap()

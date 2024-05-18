@@ -81,13 +81,15 @@ fun ScheduleScreen() {
                     }
                 } else {
                     Column {
-                        OutlinedTextField(
-                            modifier = Modifier.fillMaxWidth()
-                                .padding(vertical = 8.dp),
-                            value = state.searchText,
-                            onValueChange = { onIntent(SearchTextChanged(it)) },
-                            label = { Text("Search") },
-                        )
+                        if (state.displaySearchBar) {
+                            OutlinedTextField(
+                                modifier = Modifier.fillMaxWidth()
+                                    .padding(vertical = 8.dp),
+                                value = state.searchText,
+                                onValueChange = { onIntent(SearchTextChanged(it)) },
+                                label = { Text("Search") },
+                            )
+                        }
 
                         if (state.overrideText.isNotBlank()) {
                             Text(

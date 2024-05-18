@@ -136,7 +136,9 @@ fun ScheduleScreen() {
                                         Modifier.fillMaxWidth()
                                     )
 
-                                    Spacer(Modifier.height(32.dp))
+                                    if (northbound.isNotEmpty() && southbound.isNotEmpty()) {
+                                        Spacer(Modifier.height(32.dp))
+                                    }
 
                                     DepartureSection(
                                         "Southbound",
